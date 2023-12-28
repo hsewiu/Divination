@@ -15,29 +15,63 @@
     </div>
     <div class="container">
         <div class="main-content">
-            <div class="section-1">
+            <div id="section-1" class="section-1">
                 <h1>你是誰？</h1>
                 <div class="input-area">
-                    <input name="userName" placeholder="請輸入姓名" type="text">
+                    <input name="userName" id="userName" placeholder="請輸入姓名" type="text">
                 </div>
-                <button>確認</button>
+                <button id="nameBtn" onClick="checkName_click()">確認</button>
             </div>
-            <div class="section-2">
+            <div id="section-2" class="section-2">
                 <h1>輸入你的心願</h1>
                 <div class="input-area">
-                    <input name="userName" placeholder="寫上心願" type="text">
+                    <input name="userWish" id="userWish" placeholder="寫上心願" type="text">
                 </div>
-                <button>確認</button>
+                <button id="wishBtn" onClick="checkWish_click()">確認</button>
             </div>
-            <div class="section-3">
-                <h1>領取你的筊杯！</h1>
+            <div id="section-3" class="section-3">
+                <h1>領取你的筊杯，並擲筊！</h1>
                 <img src="img/Img_bey.png">
+                <button id="takeBtn" onClick="checkMove_take_Click()" style="opacity: 0%;">確認</button>
             </div>
-            <div class="section-4">
-                <h1>偵測聖筊中...</h1>
-                <img src="img/Img_bey2.png">
+            <div id="section-4" class="section-4">
+                <div>
+                    <iframe src="https://giphy.com/embed/GSciDYcflNtkuC7mSi" width="100" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                    <h1>偵測聖筊中 ...</h1>
+                </div>
+                <button id="successBtn" onClick="checkMove_success_click()" style="opacity: 0%;">確認</button>
+                <!--<img src="img/Img_bey2.png">-->
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var userNameLog=0;
+        var userWishLog=0;
+
+        function checkName_click()
+        {
+            document.getElementById("section-1").style.display = "none";
+            document.getElementById("section-2").style.display = "flex";
+            userNameLog = document.getElementById("userName").value;
+            alert(userNameLog);
+        }
+        function checkWish_click()
+        {
+            document.getElementById("section-2").style.display = "none";
+            document.getElementById("section-3").style.display = "flex";
+            userWishLog = document.getElementById("userWish").value;
+            alert(userWishLog);
+        }
+        function checkMove_take_Click()
+        {
+            document.getElementById("section-3").style.display = "none";
+            document.getElementById("section-4").style.display = "flex";
+        }
+        function checkMove_success_click()
+        {
+            window.location.href = 'show.html';
+            document.cookie = "username="+userNameLog+";userwish="+userWishLog+";";
+        }
+      </script>
 </body>
 </html>
