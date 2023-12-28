@@ -1,5 +1,5 @@
 let yStart;
-let myTextSize = 32;
+let myTextSize = 100;
 let inputValue = "";
 
 let particlesSystem1 = [];
@@ -11,6 +11,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
   textSize(myTextSize);
+  
+  /*
   inputBox = createInput('輸入你的心願');
   inputBox.position(width / 2 - 100, height - 50);
   inputBox.style('opacity', '0.6');
@@ -19,7 +21,7 @@ function setup() {
   button.mousePressed(showText);
   clearButton = createButton('Clear');
   clearButton.position(width / 2 + 120, height - 50);
-  clearButton.mousePressed(clearText);
+  clearButton.mousePressed(clearText);*/
 
   yStart = height;
   noiseScale = 0.01;
@@ -32,6 +34,7 @@ function setup() {
   initParticles(particlesSystem2);
 
   t = 0;
+  showText();
 }
 
 function initParticles(particles) {
@@ -85,8 +88,25 @@ function updateAndDisplayParticles(particles) {
   }
 }
 
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 function showText() {
-  inputValue = inputBox.value();
+  inputValue = getCookie(userwish);
+  //inputValue = inputBox.value();
 }
 
 function clearText() {
