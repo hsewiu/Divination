@@ -106,6 +106,7 @@ function getCookie(cname) {
 
 function showText() {
   inputValue = getCookie(userwish);
+  console.log(inputValue);
   //inputValue = inputBox.value();
 }
 
